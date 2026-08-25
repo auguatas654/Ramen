@@ -78,9 +78,9 @@
             display: flex;
             gap: 30px;
             justify-content: center;
-            flex-wrap: wrap;
-            position: relative;
-            height: 80px;
+            flex-wrap: nowrap;
+            align-items: center;
+            min-height: 80px;
         }
 
         .btn {
@@ -94,6 +94,8 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            flex-shrink: 0;
         }
 
         .btn-yes {
@@ -113,13 +115,10 @@
         .btn-no {
             background: #ff6b6b;
             color: white;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
         }
 
         .btn-no:hover {
-            transform: translateX(calc(-50% + 100px)) translateY(-50px);
+            transform: translate(100px, -50px);
             box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
         }
 
@@ -152,6 +151,10 @@
                 padding: 15px 35px;
                 font-size: 18px;
             }
+
+            .buttons-container {
+                gap: 15px;
+            }
         }
     </style>
 </head>
@@ -182,7 +185,7 @@
             const randomX = (Math.random() - 0.5) * 300;
             const randomY = (Math.random() - 0.5) * 300;
             
-            button.style.transform = `translate(calc(-50% + ${randomX}px), ${randomY}px)`;
+            button.style.transform = `translate(${randomX}px, ${randomY}px)`;
         }
 
         // Escape key also tries to click yes
