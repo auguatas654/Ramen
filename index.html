@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pakvietimas į Ramen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ramen-emoji {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .message {
+            font-size: 28px;
+            color: #555;
+            margin-bottom: 50px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            height: 80px;
+        }
+
+        .btn {
+            padding: 18px 50px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-yes:active {
+            transform: scale(0.95);
+        }
+
+        .btn-no {
+            background: #ff6b6b;
+            color: white;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .btn-no:hover {
+            transform: translateX(calc(-50% + 100px)) translateY(-50px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+
+        .heart {
+            color: #ff6b6b;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+
+        .decorative-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            margin: 30px 0;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 40px 25px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .message {
+                font-size: 22px;
+            }
+
+            .btn {
+                padding: 15px 35px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="ramen-emoji">🍜</div>
+        <h1>Atidarymas!</h1>
+        <div class="decorative-line"></div>
+        <div class="message">
+            Ar nori eiti pavalgyti<br>
+            <span class="heart">❤️</span> Rameno? <span class="heart">❤️</span>
+        </div>
+        <div class="decorative-line"></div>
+        
+        <div class="buttons-container">
+            <button class="btn btn-yes" onclick="goToYesPage()">Taip!</button>
+            <button class="btn btn-no" onmouseover="moveButton(event)">Ne</button>
+        </div>
+    </div>
+
+    <script>
+        function goToYesPage() {
+            window.location.href = 'yes.html';
+        }
+
+        function moveButton(event) {
+            const button = event.target;
+            const randomX = (Math.random() - 0.5) * 300;
+            const randomY = (Math.random() - 0.5) * 300;
+            
+            button.style.transform = `translate(calc(-50% + ${randomX}px), ${randomY}px)`;
+        }
+
+        // Escape key also tries to click yes
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                goToYesPage();
+            }
+        });
+    </script>
+</body>
+</html>
