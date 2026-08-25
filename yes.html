@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puiku!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .celebration {
+            font-size: 80px;
+            margin-bottom: 30px;
+            animation: spin 1s ease-out;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(-180deg) scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: rotate(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 56px;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .details {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .date-time {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .label {
+            font-size: 16px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .heart {
+            color: #ff6b6b;
+            font-size: 28px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .message-bottom {
+            font-size: 20px;
+            color: #555;
+            margin-top: 30px;
+            font-style: italic;
+        }
+
+        .decorative-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            margin: 20px 0;
+        }
+
+        .btn-back {
+            margin-top: 40px;
+            padding: 12px 30px;
+            font-size: 16px;
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-back:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 40px 25px;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            .date-time {
+                font-size: 24px;
+            }
+
+            .celebration {
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="celebration">
+            🎉 🍜 🎉
+        </div>
+        <h1>Puiku!</h1>
+        <div class="decorative-line"></div>
+        
+        <p class="label">Susitikimas numatytas:</p>
+        
+        <div class="details">
+            <div class="date-time">
+                📅 Šeštadienis, 08.29
+            </div>
+            <div class="date-time">
+                🕐 14:00 val.
+            </div>
+        </div>
+
+        <p class="message-bottom">
+            Lauksiu mūsų susitikimo <span class="heart">❤️</span>
+        </p>
+
+        <button class="btn-back" onclick="goBack()">← Grįžti</button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
